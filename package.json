@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.mjs",
+  "main": "build/server.js",
   "scripts": {
     "build": "tsc"
   },
