@@ -1,15 +1,8 @@
 import './styles/main.css';
 
-interface buttonProps{
- title: string;
-}
-
-
-
 function App() {
   return (
-  <div>
-
+  <div className="w-8 h-8 bg-black dark:bg-violet-500">
 
   </div>
   
