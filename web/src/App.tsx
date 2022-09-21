@@ -1,12 +1,11 @@
 import './styles/main.css';
-
+import logoIMg from './assets/Logo.svg'
 function App() {
   return (
-  <div className="w-8 h-8 bg-black dark:bg-violet-500">
-
-  </div>
-  
+    <div>
+      <img src={logoIMg} alt=''/>
+    </div>
   )
-  
+
 }
 export default App
