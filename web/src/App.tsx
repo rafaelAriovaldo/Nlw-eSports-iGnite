@@ -5,7 +5,7 @@ function App() {
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
       <img src={logoIMg} alt="" />
       <h1 className="text-6xl text-white font-black mt-20">
-        Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">Duo</span>  está Aqui.</h1>
+        Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">Duo</span>  Está Aqui.</h1>
       <div className="grid grid-cols-6 gap-6 mt-16">
         <a href="" className='relative rounded-lg overflow-hidden'>
           <img src="/Games-1.png" alt="" />
@@ -61,6 +61,18 @@ function App() {
 
           </div>
         </a>
+
+      </div>
+      <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-8 overflow-hidde">
+      <div className='bg-[#2A2634] px-8 py-6'>
+        <div>
+        <strong className='text-2xl text-white font-black block'>Não encontrou seu duo?</strong>
+        <span className='text-zinc-400'>Publique um anúncio para encontrar novos players!</span>
+        </div>
+        <button>
+          Publicar anúncio
+        </button>
+      </div>
       </div>
     </div>
   )
