@@ -6,11 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        'nlw-gradient': 'linear-gradient(89.86deg, #9572FC 23.08%, #43E7AD 33.94%, #E1D55D 44.57%)'
-      },
+      
       backgroundImage:{
-        Fundo: "url('./public/Fundo.png')"
+        Fundo: "url('./public/Fundo.png')",
+        'nlw-gradient': 'linear-gradient(89.86deg, #9572FC 23.08%, #43E7AD 33.94%, #E1D55D 44.57%)'
       }
     },
   },
