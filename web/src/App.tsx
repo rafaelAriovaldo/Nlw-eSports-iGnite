@@ -1,6 +1,6 @@
 import './styles/main.css';
 import logoIMg from './assets/Logo.svg';
-import {MagnifyingGlass} from 'phosphor-react';
+import {MagnifyingGlassPlus} from 'phosphor-react';
 function App() {
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
@@ -70,7 +70,8 @@ function App() {
         <strong className='text-2xl text-white font-black block'>Não encontrou seu duo?</strong>
         <span className='text-zinc-400'>Publique um anúncio para encontrar novos players!</span>
         </div>
-        <button className='py-3 px-4 bg-violet-500 hover:bg-violet-600 text-white rounded'>
+        <button className='py-3 px-4 bg-violet-500 hover:bg-violet-600 text-white rounded flex items-center gap-2'>
+          <MagnifyingGlassPlus size={24}/>
           Publicar anúncio
         </button>
       </div>
