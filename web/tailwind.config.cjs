@@ -8,6 +8,9 @@ module.exports = {
     fontFamily:{
       sans:['Inter', 'sans-serif']
     },
+    fontFamily:{
+      sans:['Inter', 'normal']
+    },
     extend: {
       
       backgroundImage:{
