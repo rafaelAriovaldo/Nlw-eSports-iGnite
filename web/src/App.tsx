@@ -69,7 +69,7 @@ function App() {
         <strong className='text-2xl text-white font-black block'>Não encontrou seu duo?</strong>
         <span className='text-zinc-400'>Publique um anúncio para encontrar novos players!</span>
         </div>
-        <button>
+        <button className='py-3 px-4 bg-violet-500 text-white rounded'>
           Publicar anúncio
         </button>
       </div>
