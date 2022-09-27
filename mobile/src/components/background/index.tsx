@@ -2,7 +2,7 @@
 import { ImageBackground } from 'react-native';
 
 import { styles } from './styles';
-import backgroundImg from '../../../assets/Fundo (1).png';
+import backgroundImg from '../../assets/Games/Fundo1x.png';
 interface Props {
   children: React.ReactNode;
 }
