@@ -1,5 +1,5 @@
 
-import { View, Image } from 'react-native';
+import { View, Image,FlatList } from 'react-native';
 
 import logoImg from '../../assets/Games/Logo.png'
 import { Heading } from '../../components/background/Heading';
@@ -15,13 +15,22 @@ export function Home() {
         style={styles.logo}
       />
       <Heading
-        title="Encontre seu Duo"
+        title="Encontre seu Duo!!"
         subtitle="Selecione o game que deseja jogar..."
       />
-
-      <GameCard
-        data={GAMES[0]}
+      <FlatList
+      data={GAMES}
+      keyExtractor={item => item.id}
+      renderItem={({item}) =>(
+        <GameCard
+        data={item}
       />
+      )}
+      showsHorizontalScrollIndicator={false}
+      horizontal
+      contentContainerStyle={styles.contentList}
+      />
+      
     </View>
   );
 }

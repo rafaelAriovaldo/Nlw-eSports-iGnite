@@ -41,6 +41,7 @@ export const GAMES = [{
 {
     id:'6',
     name: 'World of Warcraft',
+    ads:5,
     cover: require('../assets/Games/Games-6.png')
 },
 ];
