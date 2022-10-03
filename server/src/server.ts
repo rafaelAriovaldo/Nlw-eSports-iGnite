@@ -28,6 +28,12 @@ app.get('/ads/:id/ads', (req, res) => {
 
 });
 
+app.get('/ads/:id/discord', (req, res) => {
+
+    return res.json([])
+
+});
+
 app.get('/ads', (req, res) => {
     console.log("ta rodando")
     res.json(['Acessou ads com array',
