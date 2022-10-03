@@ -19,7 +19,7 @@ model Game {
 
 model Ad {
   id              String   @id @default(uuid())
-  gameId String
+  gameId          String
   name            String
   yearsPlaying    Int
   discord         String
@@ -30,5 +30,4 @@ model Ad {
   createdAt       DateTime @default(now())
 
   game Game @relation(fields: [gameId], references: [id])
-  
 }
