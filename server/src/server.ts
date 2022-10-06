@@ -1,9 +1,11 @@
 import express, { response } from 'express';
-
+import cors from 'cors';
 const app = express()
 app.use(express.json())
+app.use(cors())
 import { PrismaClient } from '@prisma/client'
 import { convertString } from './utils/convert-hour-string-to-minuite';
+import { convertsString } from './utils/convert-minutes-to-hour';
 const prisma = new PrismaClient({
     log: ['query']
 })
@@ -24,7 +26,7 @@ app.get('/games', async (req, res) => {
 app.post('/games/:id/ads', async (req, res) => {
     const gameId = req.params.id;
     const body: any = req.body;
-    const Ad = await prisma.ad.create({
+    const ad = await prisma.ad.create({
         data:{
             gameId,
             name: body.name,
@@ -36,7 +38,7 @@ app.post('/games/:id/ads', async (req, res) => {
             UseVoiceChannel: body.UseVoiceChannel,
         }
     })
-    return res.status(201).json(Ad);
+    return res.status(201).json(ad);
 });
 
 app.post('/ads', (req, res) => {
@@ -68,7 +70,8 @@ app.get('/ads/:id/ads', async (req, res) => {
     return res.json(ads.map(ads => {
         return {
             ...ads,
-            weekDays: ads.weekDays.split(',')
+            weekDays: ads.weekDays.split(','),
+            hoursStart: convertsString(ads.hoursStart),
         }
     }))
 
