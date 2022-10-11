@@ -3,24 +3,31 @@ import { useState, useEffect } from 'react';
 import logoIMg from './assets/Logo.svg';
 import { GameBanner } from './components/GameBanner';
 import { AdBanner } from './components/CreateAdBanner';
+interface Game{
+  id: string;
+  title: string;
+  banneUrl: string;
+  _count:{};
+  ads: number;
+}
 function App() {
 
-  const [hasUserClicekdOnButton,setHasUserClikedOnbutton] = useState(false);
-function handleClickedOnButton(){
-  setHasUserClikedOnbutton(!hasUserClicekdOnButton);
-}
-useEffect(()=>{
-console.log(handleClickedOnButton)
+  const [games,setGames] = useState<Game[]>([]);
 
-},[hasUserClicekdOnButton])
+useEffect(()=>{
+fetch('http://localhost:3000/games')
+.then(res => res.json())
+.then(data => {
+  setGames(data)
+})
+},[])
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
       <img src={logoIMg} alt="" />
       <h1 className="text-6xl text-white font-black mt-20">
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">Duo</span>  Está Aqui.
       </h1>
-      <button onClick={handleClickedOnButton}>Clique aqui</button>
-              {hasUserClicekdOnButton ? 'Clicou miseravi!!'  :null}
+     
       <div className="grid grid-cols-6 gap-6 mt-16">
 
         <GameBanner bannerUrl="/Game-1.png" title='League of legends' adsCount={5} />
