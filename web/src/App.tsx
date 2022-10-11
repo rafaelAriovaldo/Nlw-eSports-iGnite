@@ -7,7 +7,7 @@ function App() {
 
   const [hasUserClicekdOnButton,setHasUserClikedOnbutton] = useState(false);
 function handleClickedOnButton(){
-  setHasUserClikedOnbutton(true);
+  setHasUserClikedOnbutton(!hasUserClicekdOnButton);
 }
 useEffect(()=>{
 console.log(handleClickedOnButton)
