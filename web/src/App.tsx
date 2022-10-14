@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import logoIMg from './assets/Logo.svg';
 import { GameBanner } from './components/GameBanner';
 import { AdBanner } from './components/CreateAdBanner';
+import * as Dialog from '@radix-ui/react-dialog';
 interface Game {
   id: string;
   title: string;
@@ -42,7 +43,15 @@ function App() {
         })}
 
       </div>
+      <Dialog.Root>
+
+      <Dialog.Portal>
+
+        
+      </Dialog.Portal>
       <AdBanner />
+      </Dialog.Root>
+      
     </div>
   )
 
