@@ -57,10 +57,11 @@ function App() {
               Publique um anúncio
             </Dialog.Title>
             <Dialog.Content>
-              <form>
-                <div>
-                  <label htmlFor='game'>Qual o Game?</label>
-                  <input id="game" placeholder='Selecione o gmae que deseja jogar' />
+              <form className='mt-6'>
+                <div className='flex flex-col gap-2'>
+                  <label  htmlFor='game' className='font-semibold'>Qual o Game?</label>
+                  <input className='bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500'
+                  id="game" placeholder='Selecione o gmae que deseja jogar' />
                 </div>
                 <div>
                   <label htmlFor='name'>Seu nome (ou nickname)</label>
