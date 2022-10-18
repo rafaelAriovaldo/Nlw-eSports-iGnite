@@ -67,7 +67,7 @@ function App() {
                 <label htmlFor='name'>Seu nome (ou nickname)</label>
                 <Input id="name" placeholder='Como te chamam dentro do jogo?' />
               </div>
-              <div className='grid grid-col gap-6'>
+              <div className='grid grid-cols-2 gap-6'>
                 <div className='flex flex-col gap-2'>
                   <label htmlFor="yearsPlaying">Joga a quantos anos?</label>
                   <Input id='yearsPlaying' type="number" placeholder='Tudo bem ser zero' />
@@ -76,32 +76,32 @@ function App() {
                   <label htmlFor="discord">Qual seu discord?</label>
                   <Input id='discord' type="text" placeholder='User#0000' />
                 </div>
-                <div className='flex  gap-6'>
-                  <div className='flex flex-col gap-2'>
-                    <label htmlFor="weekdays">Quando costuma jogar?</label>
-                    <div className='grid grid-cols-4 gap-2'>
-                      <button title='Domingo' className='w-8 h-8rounded bg-zinc-900'>D</button>
-                      <button title='Segunda' className='w-8 h-8 rounded bg-zinc-900' >S</button>
-                      <button title='Terça' className='w-8 h-8 rounded bg-zinc-900'>T</button>
-                      <button title='Quarta' className='w-8 h-8 rounded bg-zinc-900'>Q</button>
-                      <button title='Quinta' className='w-8 h-8 rounded bg-zinc-900'>Q</button>
-                      <button title='Sexta' className='w-8 h-8 rounded bg-zinc-900'>S</button>
-                      <button title='Sábado' className='w-8 h-8 rounded bg-zinc-900'>S</button>
+              </div>
+              <div className='flex gap-6 '>
+                <div className='flex flex-col gap-2 '>
+                  <label htmlFor="weekdays">Quando costuma jogar?</label>
+                  <div className='grid grid-cols-4 gap-2'>
+                    <button title='Domingo' className='w-8 h-8 rounded bg-zinc-900' >D</button>
+                    <button title='Segunda' className='w-8 h-8 rounded bg-zinc-900' >S</button>
+                    <button title='Terça' className='w-8 h-8 rounded bg-zinc-900'>T</button>
+                    <button title='Quarta' className='w-8 h-8 rounded bg-zinc-900'>Q</button>
+                    <button title='Quinta' className='w-8 h-8 rounded bg-zinc-900'>Q</button>
+                    <button title='Sexta' className='w-8 h-8 rounded bg-zinc-900'>S</button>
+                    <button title='Sábado' className='w-8 h-8 rounded bg-zinc-900'>S</button>
 
-                    </div>
                   </div>
-                  <div>
-                    <div className='flex flex-col gap-2 flex-1'>
-                      <label htmlFor="hourStart">Qual horário do dia?</label>
-                      <div className='grid grid-cols-2 gap-2 '>
-                        <Input id='hourstart' type="time" placeholder='De' />
-                        <Input id='hourEnd' type="time" placeholder='Até' />
-                      </div>
-                    </div>
+                </div>
+
+                <div className='flex flex-col gap-2   flex-1'>
+                  <label htmlFor="hourStart">Qual horário do dia?</label>
+                  <div className='grid grid-cols-2  gap-2 w-15 h-8' >
+                    <Input id='hourstart' type="time" placeholder='De' />
+                    <Input id='hourEnd' type="time" placeholder='Até' />
                   </div>
                 </div>
               </div>
-              <div>
+
+              <div className='mt-2 flex gap-2 text-sm'>
                 <Input type="checkbox" />
                 Costumo me conectar com o chat de voz
               </div>
