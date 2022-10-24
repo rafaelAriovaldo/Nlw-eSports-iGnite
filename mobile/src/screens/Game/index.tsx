@@ -1,21 +1,25 @@
 import { Entypo } from '@expo/vector-icons'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Background } from '../../components/background';
-import { useRoute } from '@react-navigation/native';
+import { useRoute,useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { GameParams } from '../../@types/navigation';
 import { Image, Touchable, TouchableOpacity, View } from 'react-native';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/Games/Logo.png'
+import { Heading } from '../../components/background/Heading';
 export function Game() {
     const route = useRoute();
+    const navigation = useNavigation();
     const game = route.params as GameParams;
-
+    function handLegoBack (){
+        navigation.goBack();
+    } 
     return (
         <Background>
             <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={handLegoBack}>
                         <Entypo
                             name='chevron-thin-left'
                             color={THEME.COLORS.CAPTION_300}
@@ -26,9 +30,20 @@ export function Game() {
                     <Image
                         source={logoImg}
                     />
-
+                    <View style={styles.right}/>
                 </View>
 
+                <Image
+                
+                source={{ uri: game.bannerUrl}}
+                style={styles.cover}
+                resizeMode="cover"
+                />
+
+                <Heading
+                title={game.title}
+                subtitle="Conecte e comece a jogar!"
+                />
             </SafeAreaView>
         </Background>
     );
