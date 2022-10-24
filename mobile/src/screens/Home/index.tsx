@@ -2,13 +2,20 @@ import { useEffect, useState } from 'react';
 import { Image, FlatList } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import logoImg from '../../assets/Games/Logo.png'
+import { Background } from '../../components/background';
 import { Heading } from '../../components/background/Heading';
 import { GameCard, GameCardProps } from '../../components/GameCard';
-import { GAMES } from '../../utils/games';
+import{useNavigation} from '@react-navigation/native'
+
 import { styles } from './styles';
 
 export function Home() {
-  const [games, setGames] = useState<GameCardProps[]>([])
+  const [games, setGames] = useState<GameCardProps[]>([]);
+  const navigation = useNavigation();
+  function handleOpenGame(){
+    navigation.navigate('game')
+  }
+
   useEffect(() => {
     fetch('http://192.168.10.10:3000/games')
     .then(res => res.json())
@@ -16,6 +23,7 @@ export function Home() {
 
   }, []);
   return (
+    <Background>
     <SafeAreaView style={styles.container}>
       <Image
         source={logoImg}
@@ -31,6 +39,7 @@ export function Home() {
         renderItem={({ item }) => (
           <GameCard
             data={item}
+            onPress={handleOpenGame}
           />
         )}
         showsHorizontalScrollIndicator={false}
@@ -39,5 +48,6 @@ export function Home() {
       />
 
     </SafeAreaView>
+    </Background>
   );
 }

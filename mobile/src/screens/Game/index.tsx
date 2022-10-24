@@ -1,12 +1,15 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Background } from '../../components/background';
 
 import { styles } from './styles';
 
 export function Game() {
-  return (
-    <SafeAreaView style={styles.container}>
+    return (
+        <Background>
+            <SafeAreaView style={styles.container}>
 
-    </SafeAreaView>
-  );
+            </SafeAreaView>
+        </Background>
+    );
 }
