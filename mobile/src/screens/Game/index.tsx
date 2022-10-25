@@ -8,6 +8,7 @@ import { Image, Touchable, TouchableOpacity, View } from 'react-native';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/Games/Logo.png'
 import { Heading } from '../../components/background/Heading';
+import { DuoCard } from '../../components/DuoCard';
 export function Game() {
     const route = useRoute();
     const navigation = useNavigation();
@@ -44,6 +45,7 @@ export function Game() {
                 title={game.title}
                 subtitle="Conecte e comece a jogar!"
                 />
+                <DuoCard/>
             </SafeAreaView>
         </Background>
     );
