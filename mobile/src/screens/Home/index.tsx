@@ -46,7 +46,10 @@ export function Home() {
         horizontal
         contentContainerStyle={styles.contentList}
       />
-
+ <Heading
+        title="Bora Jogar!"
+        subtitle='Forme sua equipe com os melhores.'
+      />
     </SafeAreaView>
     </Background>
   );
