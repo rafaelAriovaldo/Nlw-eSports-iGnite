@@ -1,10 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
+import { THEME } from '../../theme';
 import { DuoInfo } from '../DuoInfo';
 
 import { styles } from './styles';
 export interface DuoCardProps{
-  UseVoiceChannel: true,
+  UseVoiceChannel: boolean,
   hourEnd: string,
   hoursStart: string,
   id: string,
@@ -23,16 +24,17 @@ export function DuoCard({data}: Props) {
       value={data.name}
       />
       <DuoInfo
-      label="Tempo de Jogo"
+      label="Tempo de Jogo:"
       value={`${data.yearsPlaying} anos.`}
       />
       <DuoInfo
-      label="Disponibilidade"
-      value={`${data.weekDays.length} dias` }
+      label="Disponibilidade:"
+      value={`${data.weekDays.length} dias\u2022 ${data.hoursStart} - ${data.hourEnd}` }
       />
       <DuoInfo
-      label="Nome:"
-      value="Rafael Souza"
+      label="Chamada de áudio?"
+      value={data.UseVoiceChannel ? "Sim" : "Não"}
+      colorValue={data.UseVoiceChannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT}
       />
     </View>
   );
