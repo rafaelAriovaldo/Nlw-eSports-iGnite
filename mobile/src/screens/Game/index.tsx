@@ -1,10 +1,10 @@
 import { Entypo } from '@expo/vector-icons'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Background } from '../../components/background';
-import { useRoute,useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { GameParams } from '../../@types/navigation';
-import { FlatList, Image, Touchable, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, Text, Touchable, TouchableOpacity, View } from 'react-native';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/Games/Logo.png'
 import { Heading } from '../../components/background/Heading';
@@ -15,18 +15,18 @@ export function Game() {
     const navigation = useNavigation();
     const game = route.params as GameParams;
     const [duos, setDuos] = useState<DuoCardProps[]>([]);
-    function handLegoBack (){
+    function handLegoBack() {
         navigation.goBack();
-    } 
-   
+    }
+
     useEffect(() => {
         fetch(`http://192.168.10.10:3000/ads/${game.id}/ads`)
-        .then(res => res.json())
-        .then(data => setDuos(data));
+            .then(res => res.json())
+            .then(data => setDuos(data));
 
-      
-      }, []);
-    
+
+    }, []);
+
     return (
         <Background>
             <SafeAreaView style={styles.container}>
@@ -42,26 +42,38 @@ export function Game() {
                     <Image
                         source={logoImg}
                     />
-                    <View style={styles.right}/>
+                    <View style={styles.right} />
                 </View>
 
                 <Image
-                
-                source={{ uri: game.bannerUrl}}
-                style={styles.cover}
-                resizeMode="cover"
+
+                    source={{ uri: game.bannerUrl }}
+                    style={styles.cover}
+                    resizeMode="cover"
                 />
 
                 <Heading
-                title={game.title}
-                subtitle="Conecte e comece a jogar!"
+                    title={game.title}
+                    subtitle="Conecte e comece a jogar!"
                 />
                 <FlatList
-                data={duos}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
-                    <DuoCard data={duos[0]}/>
-                )}
+                    data={duos}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <DuoCard data={duos[0]}
+                            onConect={() => { }}
+                        />
+                    )}
+                    horizontal
+                    style={styles.containerList }
+                    contentContainerStyle={[, duos.length > 0 ? styles.contentList : styles.EmpetyListContent]}
+                    showsHorizontalScrollIndicator={false}
+
+                    ListEmptyComponent={()=>(
+                        <Text style={styles.listEmpy}>
+                            Nao há anúncios publicados no momento.
+                        </Text>
+                    )}
                 />
             </SafeAreaView>
         </Background>
