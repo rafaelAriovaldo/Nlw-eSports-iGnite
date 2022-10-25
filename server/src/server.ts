@@ -73,6 +73,7 @@ app.get('/ads/:id/ads', async (req, res) => {
             ...ads,
             weekDays: ads.weekDays.split(','),
             hoursStart: convertsString(ads.hoursStart),
+            hourEnd:convertsString(ads.hourEnd)
         }
     }))
 
