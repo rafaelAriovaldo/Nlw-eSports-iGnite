@@ -4,18 +4,29 @@ import { Background } from '../../components/background';
 import { useRoute,useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { GameParams } from '../../@types/navigation';
-import { Image, Touchable, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, Touchable, TouchableOpacity, View } from 'react-native';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/Games/Logo.png'
 import { Heading } from '../../components/background/Heading';
-import { DuoCard } from '../../components/DuoCard';
+import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { useEffect, useState } from 'react';
 export function Game() {
     const route = useRoute();
     const navigation = useNavigation();
     const game = route.params as GameParams;
+    const [duos, setDuos] = useState<DuoCardProps[]>([]);
     function handLegoBack (){
         navigation.goBack();
     } 
+   
+    useEffect(() => {
+        fetch(`http://192.168.10.10:3000/ads/${game.id}/ads`)
+        .then(res => res.json())
+        .then(data => setDuos(data));
+
+      
+      }, []);
+    
     return (
         <Background>
             <SafeAreaView style={styles.container}>
@@ -45,7 +56,13 @@ export function Game() {
                 title={game.title}
                 subtitle="Conecte e comece a jogar!"
                 />
-                <DuoCard/>
+                <FlatList
+                data={duos}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => (
+                    <DuoCard data={duos[0]}/>
+                )}
+                />
             </SafeAreaView>
         </Background>
     );

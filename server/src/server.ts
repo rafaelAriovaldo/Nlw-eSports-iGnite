@@ -56,6 +56,7 @@ app.get('/ads/:id/ads', async (req, res) => {
             UseVoiceChannel: true,
             hoursStart: true,
             hourEnd: true,
+            yearsPlaying: true,
 
         },
         where: {

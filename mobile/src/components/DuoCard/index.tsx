@@ -3,22 +3,32 @@ import { View } from 'react-native';
 import { DuoInfo } from '../DuoInfo';
 
 import { styles } from './styles';
-export
-
-export function DuoCard() {
+export interface DuoCardProps{
+  UseVoiceChannel: true,
+  hourEnd: string,
+  hoursStart: string,
+  id: string,
+  name: string,
+  weekDays:string[],
+  yearsPlaying: String;
+}
+interface Props{
+  data: DuoCardProps;
+}
+export function DuoCard({data}: Props) {
   return (
     <View style={styles.container}>
       <DuoInfo
       label="Nome:"
-      value="Rafael Souza"
+      value={data.name}
       />
       <DuoInfo
-      label="Nome:"
-      value="Rafael Souza"
+      label="Tempo de Jogo"
+      value={`${data.yearsPlaying} anos.`}
       />
       <DuoInfo
-      label="Nome:"
-      value="Rafael Souza"
+      label="Disponibilidade"
+      value={`${data.weekDays.length} dias` }
       />
       <DuoInfo
       label="Nome:"
