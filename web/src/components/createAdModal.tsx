@@ -1,4 +1,4 @@
-import { Check, GameController, Option } from 'phosphor-react';
+import { Check, GameController, Key, Option } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
@@ -26,15 +26,45 @@ export function CreateAdModal() {
     const [useVoiceChannel, setUseVoiceChannel] = useState(false)
 
     useEffect(() => {
-        axios('http://localhost:3000/games').then(res => {
-            setGames(res.data)
-        })
+        axios('http://localhost:3000/games')
+            .then(response => {
+                setGames(response.data)
+            })
+            document
+            .getElementById("gameId")
     }, [])
 
-    function handleCreatAd(event: FormEvent) {
+    async function handleCreatAd(event: FormEvent) {
         event.preventDefault();
-        const formData = new FormData(event.target as HTMLFormElement);
+        const formData = new FormData(event.target as HTMLFormElement)
+        
         const data = Object.fromEntries(formData)
+    
+        if (!data.name) {
+            return;
+        }
+        try {
+            
+            await axios.post(`http://localhost:3000/games/${data.game}/ads`, {
+                
+                
+                name: data.name,
+                yearsPlaying: Number(data.yearsPlaying),
+                discord: data.discord,
+                weekDays: weekDays.map(Number),
+                hoursStart: data.hourstart,
+                hourEnd: data.hourEnd,
+                UseVoiceChannel: useVoiceChannel
+                
+            })
+
+            alert('registro feito com sucesso!')
+        } catch (error) {
+            alert('Deu ruim');
+            console.log(data)
+        }
+    
+
     }
     return (
         <Dialog.Portal>
