@@ -3,15 +3,6 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
 import * as Checkbox from '@radix-ui/react-checkbox';
-export default () => (
-
-    <Checkbox.Root>
-
-        <Checkbox.Indicator />
-
-    </Checkbox.Root>
-
-);
 import { Input } from './Form/input';
 import { useEffect, useState, FormEvent } from 'react';
 import axios from 'axios';
@@ -26,44 +17,42 @@ export function CreateAdModal() {
     const [useVoiceChannel, setUseVoiceChannel] = useState(false)
 
     useEffect(() => {
-        axios('http://localhost:3000/games')
-            .then(response => {
-                setGames(response.data)
-            })
-            document
-            .getElementById("gameId")
+        axios('http://localhost:3000/games').then(response => {
+            setGames(response.data)
+        })
+
     }, [])
 
     async function handleCreatAd(event: FormEvent) {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement)
-        
         const data = Object.fromEntries(formData)
-    
+
+
         if (!data.name) {
             return;
         }
         try {
-            
-            await axios.post(`http://localhost:3000/games/${data.game}/ads`, {
-                
-                
+
+            const response = await axios.post(`http://localhost:3000/games/${data.game}/ads`, {
+
                 name: data.name,
                 yearsPlaying: Number(data.yearsPlaying),
                 discord: data.discord,
                 weekDays: weekDays.map(Number),
-                hoursStart: data.hourstart,
+                hoursStart: data.hoursStart,
                 hourEnd: data.hourEnd,
                 UseVoiceChannel: useVoiceChannel
-                
+
             })
 
             alert('registro feito com sucesso!')
         } catch (error) {
             alert('Deu ruim');
             console.log(data)
+
         }
-    
+
 
     }
     return (
@@ -79,17 +68,15 @@ export function CreateAdModal() {
 
                 <form onSubmit={handleCreatAd} className='mt-8 flex flex-col gap-4'>
                     <div className='flex flex-col gap-2'>
-                        <label htmlFor='game' className='font-semibold'>Qual o Game?</label>
-                        <select id='game' placeholder=''
+                        <label htmlFor='Game' className='font-semibold'>Qual o Game?</label>
+                        <select name='game' id='game' placeholder=''
                             className="bg-zinc-900 py-2 px-3 rounded text-sm placeholder:text-zinc-500 appearance-none"
                             defaultValue=""
                         >
-                            <option value="">Selecione o game que deseja jogar</option>
-                            {
-                                games.map(game => {
-                                    return <option key={game.id}> {game.title}</option>
-                                })
-                            }
+                            <option disabled value="">Selecione o game que deseja jogar</option>
+                            {games.map(game => {
+                                return <option key={game.id} value={game.id}>{game.title}</option>
+                            })}
                         </select>
                     </div>
                     <div className='flex flex-col gap-2'>
@@ -150,7 +137,7 @@ export function CreateAdModal() {
                         <div className='flex flex-col gap-2   flex-1'>
                             <label htmlFor="hourStart">Qual horário do dia?</label>
                             <div className='grid grid-cols-2  gap-2 w-15 h-8' >
-                                <Input name='hourstart' id='hourstart' type="time" placeholder='De' />
+                                <Input name='hoursStart' id='hourstart' type="time" placeholder='De' />
                                 <Input name='hourEnd' id='hourEnd' type="time" placeholder='Até' />
                             </div>
                         </div>
