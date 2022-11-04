@@ -10,11 +10,14 @@ import logoImg from '../../assets/Games/Logo.png'
 import { Heading } from '../../components/background/Heading';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
 import { useEffect, useState } from 'react';
+import {DuoMAth} from '../../components/DuoMAth'
+
 export function Game() {
     const route = useRoute();
     const navigation = useNavigation();
     const game = route.params as GameParams;
     const [duos, setDuos] = useState<DuoCardProps[]>([]);
+    const [discordDuoSelected, setDuoSelect] = useState('');
     function handLegoBack() {
         navigation.goBack();
     }
@@ -75,6 +78,12 @@ export function Game() {
                         </Text>
                     )}
                 />
+                <DuoMAth 
+                visible={discordDuoSelected.length > 0}
+                discord="Jubarti"
+                onClose={() => setDuoSelect('')}
+                />
+
             </SafeAreaView>
         </Background>
     );
